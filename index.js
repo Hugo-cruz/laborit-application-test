@@ -58,6 +58,8 @@ server.post('/api/brands', function(req,res) {
     console.log("Create para marcas");
     const { name } = req.body;
     console.log(name);
+    execSQLQuery('INSERT INTO Brands (name) VALUES ('+name+')', res);
+    console.log(name+" adicionado com sucesso");
 });
 
 //Models
@@ -65,6 +67,8 @@ server.post('/api/models', function(req,res) {
     console.log("Create para models");
     const { name } = req.body;
     console.log(name);
+    execSQLQuery('INSERT INTO Models (name) VALUES (\''+name+'\')', res);
+    console.log(name+" adicionado com sucesso");
 });
 
 //Vehicles
@@ -72,9 +76,14 @@ server.post('/api/vehicles', function(req,res) {
     console.log("Create para Vehicles");
     const { name } = req.body;
     console.log(name);
+    execSQLQuery('INSERT INTO Vehicles (name) VALUES ('+name+')', res);
+    console.log(name+" adicionado com sucesso");
 });
 
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> feature/node_posts
 function execSQLQuery(sqlQry, res){
     const connection = mysql.createConnection({
         host     : 'mysql669.umbler.com',
@@ -82,7 +91,11 @@ function execSQLQuery(sqlQry, res){
         user     : 'db-laborit',
         password : 'laborit123',
         database : 'processoseletivo'
+<<<<<<< HEAD
       });
+=======
+        });
+>>>>>>> feature/node_posts
  
   connection.query(sqlQry, function(error, results, fields){
       if(error) 
@@ -92,5 +105,9 @@ function execSQLQuery(sqlQry, res){
       connection.end();
       console.log('executou!');
   });
+<<<<<<< HEAD
 }
 >>>>>>> feature/node_gets
+=======
+}
+>>>>>>> feature/node_posts

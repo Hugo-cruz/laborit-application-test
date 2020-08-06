@@ -9,10 +9,7 @@
     "dev": "nodemon index.js"
   },
   "dependencies": {
-<<<<<<< HEAD
     "body-parser": "^1.19.0",
-=======
->>>>>>> feature/node_gets
     "express": "^4.17.1",
     "mysql": "^2.18.1"
   },
