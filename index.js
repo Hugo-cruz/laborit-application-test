@@ -117,3 +117,27 @@ server.put('/api/vehicles/:id', function(req,res) {
     const id = req.params.id;
     execSQLQuery('UPDATE Vehicles SET name=\''+name+'\' WHERE ID='+id, res);
 });
+
+//------ Delete -----------------------
+//Brands
+server.delete('/api/brands/:id', function(req,res) {
+    console.log("Delete para marcas");
+    console.log(req.params.id);
+    const id = req.params.id;
+    execSQLQuery('DELETE FROM Brands WHERE ID='+id, res);
+});
+//Models
+server.delete('/api/models/:id', function(req,res) {
+    console.log("Gets para models");
+    console.log(req.params.id);
+    const id = req.params.id;
+    execSQLQuery('DELETE FROM Models WHERE ID='+id, res);
+});
+//Vehicles
+server.delete('/api/vehicles/:id', function(req,res) {
+    console.log("Gets para Vehicles");
+    console.log(req.params.id);
+    const id = req.params.id;
+    execSQLQuery('DELETE FROM Vehicles WHERE ID='+id, res);
+});
+
