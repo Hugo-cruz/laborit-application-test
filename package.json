@@ -6,10 +6,11 @@
   "author": "cruz4 <cruz@raccoon.ag>",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon index.js" 
+    "dev": "nodemon index.js"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mysql": "^2.18.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
