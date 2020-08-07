@@ -75,10 +75,14 @@ function createTableModels(conn){
 function createTableVehicles(conn){
  
     const sql = "CREATE TABLE IF NOT EXISTS Vehicles (\n"+
-                "ID int NOT NULL AUTO_INCREMENT,\n"+
-                "name varchar(150) NOT NULL,\n"+
-                "PRIMARY KEY (ID)\n"+
-                ");";
+        "ID int NOT NULL AUTO_INCREMENT,\n"+
+        "brand varchar(150) NOT NULL,\n"+
+        "model varchar(150) NOT NULL,\n"+
+        "yearmodel int(4) NOT NULL,\n"+
+        "fuel varchar(15) NOT NULL,\n"+
+        "value decimal(15,2) NOT NULL,\n"+
+        "PRIMARY KEY (ID))\n"+
+        ");";
     
     conn.query(sql, function (error, results, fields){
         if(error) return console.log(error);

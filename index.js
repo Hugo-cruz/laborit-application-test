@@ -87,8 +87,13 @@ server.post('/api/models', function(req,res) {
 //Vehicles
 server.post('/api/vehicles', function(req,res) {
     console.log("Post para marcas");
-    const {name} = req.body;
-    execSQLQuery('INSERT INTO Vehicles(name) VALUES (\''+name+'\')', res);
+    const {value} = req.body;
+    const {brand} = req.body;
+    const {model} = req.body;
+    const {yearModel} = req.body;
+    const {fuel} = req.body;
+    execSQLQuery('INSERT INTO Vehicles(value,brand,model,yearModel,fuel) VALUES'+
+    '('+value+',\''+brand+'\',\''+model+'\','+yearModel+',\''+fuel+'\')', res);
 });
 
 //------ Update -----------------------
