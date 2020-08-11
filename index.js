@@ -16,7 +16,7 @@ server.get('/api/brands/:id', function(req,res) {
 
 server.get('/api/brands', function(req,res) {
     console.log("Get para todas as marcas");
-    execSQLQuery('SELECT * FROM Brands', res);
+    execSQLQuery('SELECT * FROM Brands ORDER BY name ASC', res);
 });
 
 //Models
@@ -29,7 +29,7 @@ server.get('/api/models/:id', function(req,res) {
 
 server.get('/api/models', function(req,res) {
     console.log("Gets para todos os models");
-    execSQLQuery('SELECT * FROM Models', res);
+    execSQLQuery('SELECT * FROM Models  ORDER BY name ASC', res);
 });
 
 //Vehicles
@@ -43,7 +43,7 @@ server.get('/api/vehicles/:id', function(req,res) {
 server.get('/api/vehicles', function(req,res) {
     console.log("Gets para todos os Vehicles");
     console.log(req.params.id);
-    execSQLQuery('SELECT * FROM Vehicles', res);
+    execSQLQuery('SELECT * FROM Vehicles  ORDER BY name ASC', res);
 });
 
 function execSQLQuery(sqlQry, res){
