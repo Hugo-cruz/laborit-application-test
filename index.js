@@ -52,6 +52,12 @@ server.get('/api/models/:id', function(req,res) {
     console.log("Gets para models");
     console.log(req.params.id);
     const id = req.params.id;
+    const SQLQuery = 'SELECT M.name, M.id\n'+
+        'FROM Models AS M INNER JOIN Brands AS B\n'+ 
+        'on M.name = B.name\n'+
+        'WHERE M.id = \n' + id +'\n'+
+        'ORDER BY M.name ASC';
+
     execSQLQuery('SELECT * FROM Models WHERE ID='+id, res);
 });
 
@@ -61,11 +67,16 @@ server.get('/api/models', function(req,res) {
 });
 
 //Vehicles
-server.get('/api/vehicles/:id', function(req,res) {
+server.get('/api/vehicles/:modelID', function(req,res) {
     console.log("Gets para Vehicles");
     console.log(req.params.id);
-    const id = req.params.id;
-    execSQLQuery('SELECT * FROM Vehicles WHERE ID='+id, res);
+    const id = req.params.modelID;
+    const SQLQuery = 'SELECT V.id,V.value,V.brand,V.model,V.yearModel,V.fuel\n'+
+        'FROM Vehicles AS V INNER JOIN Model AS M\n'+ 
+        'on V.brand = M.name\'+
+        'WHERE M.id = \n' + id +'\n'
+        'ORDER BY V.name ASC'; 
+    execSQLQuery(SQLQuery, res);
 });
 
 server.get('/api/vehicles', function(req,res) {
