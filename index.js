@@ -77,7 +77,7 @@ server.get('/api/vehicles', function(req,res) {
 
 //------ Create -----------------------
 //Brands
-server.post('/api/brands/:id', function(req,res) {
+server.post('/api/brands', function(req,res) {
     console.log("Post para marcas");
     const {name} = req.body;
     execSQLQuery('INSERT INTO Brands(name) VALUES (\''+name+'\')', res);
