@@ -7,7 +7,30 @@ const bodyParser = require('body-parser')
 server.use(bodyParser.urlencoded({ extended: true })); 
 server.use(bodyParser.json()) // for parsing application/json
 
+
 server.listen(3000);
+
+module.exports = server
+
+
+function execSQLQuery(sqlQry, res){
+    const connection = mysql.createConnection({
+        host     : 'mysql669.umbler.com',
+        port     : 41890,
+        user     : 'db-laborit',
+        password : 'laborit123',
+        database : 'processoseletivo'
+      });
+ 
+  connection.query(sqlQry, function(error, results, fields){
+      if(error) 
+        res.json(error);
+      else
+        res.json(results);
+      connection.end();
+      console.log('executou!');
+  });
+}
 
 // ######## CRUD ###########
 //------ Read -----------------------
@@ -49,27 +72,8 @@ server.get('/api/vehicles', function(req,res) {
     console.log("Gets para todos os Vehicles");
     console.log(req.params.id);
     execSQLQuery('SELECT * FROM Vehicles', res);
+    //res.send("ok");
 });
-
-function execSQLQuery(sqlQry, res){
-    const connection = mysql.createConnection({
-        host     : 'mysql669.umbler.com',
-        port     : 41890,
-        user     : 'db-laborit',
-        password : 'laborit123',
-        database : 'processoseletivo'
-      });
- 
-  connection.query(sqlQry, function(error, results, fields){
-      if(error) 
-        res.json(error);
-      else
-        res.json(results);
-      connection.end();
-      console.log('executou!');
-  });
-}
-
 
 //------ Create -----------------------
 //Brands
