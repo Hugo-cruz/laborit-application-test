@@ -17,7 +17,7 @@ function execSQLQuery(sqlQry, res){
     const connection = mysql.createConnection({
         host     : 'mysql669.umbler.com',
         port     : 41890,
-        user     : 'db-laborit',
+        user     : 'laborit-db',
         password : 'laborit123',
         database : 'processoseletivo'
       });
@@ -73,7 +73,7 @@ server.get('/api/vehicles/:modelID', function(req,res) {
     const id = req.params.modelID;
     const SQLQuery = 'SELECT V.id,V.value,V.brand,V.model,V.yearModel,V.fuel\n'+
         'FROM Vehicles AS V INNER JOIN Model AS M\n'+ 
-        'on V.brand = M.name\'+
+        'on V.brand = M.name\n'+
         'WHERE M.id = \n' + id +'\n'
         'ORDER BY V.name ASC'; 
     execSQLQuery(SQLQuery, res);
